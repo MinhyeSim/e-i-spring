@@ -19,24 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
  * 2022-05-03   MinHye_Sim   최초 생성
  */
 
-@RestController // 컴포넌트다 @User의 컴포넌트의 자식이다.
+@RestController // 컴포넌트다 @User의 컴포넌트의 자식이다. (컴포넌트 = 프로퍼티 + 메소드)
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService service;
 
-
-
-
     @PostMapping ("/join")
-    public String join(){
-        return "";
-    }
+    public String join(){ return ""; }
     @PostMapping ("/login")
-    public String login(){
-        return "";
-    }
+    public String login(){ return ""; }
     @PostMapping("/logout")
     public String logout(){
         return "";
