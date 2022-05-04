@@ -57,37 +57,37 @@ public class UserController {
     }
 
     @GetMapping("/count")
-    public long count(@RequestBody User user) {
+    public long count() {
         return service.count();
     }
 
+    @PutMapping("/put")
+    public String put(@RequestBody User user) {
+        return service.put(user);
+    }
+
     @DeleteMapping("/delete")
-    public void delete(@RequestBody User entity) {
-        service.delete(entity);
-        return null;
+    public String delete(@RequestBody User user) {
+        return service.delete(user);
 
     }
 
     @PostMapping("/join")
     public String save(@RequestBody User user) {
-        service.save(user);
-        return "";
+        return service.save(user);
     }
 
     @GetMapping("/findById/{userid}")
     public Optional<User> findById(@PathVariable String userid) {
-        return service.findById(0L);
+        return service.findById(userid);
     }
 
     @GetMapping("/existById/{userid}")
-    public boolean existsById(Long aLong) {
-        return service.existsById(0L);//userid 타입이 다름
+    public boolean existsById(@PathVariable String userid) {
+        return service.existsById(userid);//userid 타입이 다름
     }
 
-    @PutMapping("/put")
-    public boolean put(Long aLong) {
-        return false;
-    }
+
 
 
 }

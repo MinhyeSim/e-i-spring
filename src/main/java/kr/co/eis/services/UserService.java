@@ -1,11 +1,9 @@
 package kr.co.eis.services;
 
 import kr.co.eis.domains.User;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +33,18 @@ public interface UserService {
 
     long count();
 
-    void save(User user);
+    String save(User user);
 
 
     boolean existsById(long l);
 
     Optional<User> findById(long l);
 
-    void delete(User entity);
+    String delete(User entity);
+
+    String put(User user);
+
+    Optional<User> findById(String userid);
+
+    boolean existsById(String userid);
 }
