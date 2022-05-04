@@ -3,14 +3,10 @@ package kr.co.eis.controllers;
 import kr.co.eis.domains.User;
 import kr.co.eis.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,49 +30,64 @@ public class UserController {
 
     private final UserService service;
 
-    @PostMapping ("/join")
-    public String join(){ return ""; }
-    @PostMapping ("/login")
-    public String login(){ return ""; }
-    @PostMapping("/logout")
-    public String logout(){
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        return service.login(user);
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
         return "";
     }
-    public List<User> findAll() {
-        return null;
+
+    @GetMapping("/findAll")
+    public List<User> findAll(@RequestBody User user) {
+        return service.findAll();
     }
+
+    @GetMapping("/findAll/Sort")
     public List<User> findAll(Sort sort) {
-        return null;
+        return service.findAll(sort);
     }
+
+    @GetMapping("/findAll/Pageable")
     public Page<User> findAll(Pageable pageable) {
+        return service.findAll(pageable);
+    }
+
+    @GetMapping("/count")
+    public long count(@RequestBody User user) {
+        return service.count();
+    }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody User entity) {
+        service.delete(entity);
         return null;
-    }
-    public long count() {
-        return 0;
-    }
-    public void delete(User entity) {
 
     }
-    public <S extends User> S save(S entity) {
-        return null;
+
+    @PostMapping("/join")
+    public String save(@RequestBody User user) {
+        service.save(user);
+        return "";
     }
-    public Optional<User> findById(Long aLong) {
-        return Optional.empty();
+
+    @GetMapping("/findById/{userid}")
+    public Optional<User> findById(@PathVariable String userid) {
+        return service.findById(0L);
     }
+
+    @GetMapping("/existById/{userid}")
     public boolean existsById(Long aLong) {
-        return false;
-    }
-    public User getOne(Long aLong) {
-        return null;
-    }
-    public <S extends User> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-    public <S extends User> boolean exists(Example<S> example) {
-        return false;
+        return service.existsById(0L);//userid 타입이 다름
     }
 
-
+    @PutMapping("/put")
+    public boolean put(Long aLong) {
+        return false;
+    }
 
 
 }
