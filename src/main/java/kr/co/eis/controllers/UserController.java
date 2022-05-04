@@ -1,5 +1,10 @@
 package kr.co.eis.controllers;
 
+import kr.co.eis.services.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -15,5 +20,25 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController // 컴포넌트다 @User의 컴포넌트의 자식이다.
+@RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
+
+    private final UserService service;
+
+
+
+
+    @PostMapping ("/join")
+    public String join(){
+        return "";
+    }
+    @PostMapping ("/login")
+    public String login(){
+        return "";
+    }
+    @PostMapping("/logout")
+    public String logout(){
+        return "";
+    }
 }
