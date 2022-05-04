@@ -1,5 +1,8 @@
 package kr.co.eis.repositories;
 
+import kr.co.eis.domains.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  * packageName: kr.co.eis.repositories
  * fileName   : UserRepository
@@ -11,5 +14,6 @@ package kr.co.eis.repositories;
  * ================================
  * 2022-05-04   MinHye_Sim   최초 생성
  */
-public interface UserRepository {
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }
