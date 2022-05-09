@@ -1,6 +1,5 @@
 package kr.co.eis.board.domains;
 
-import kr.co.eis.soccer.domains.Soccer;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

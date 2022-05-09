@@ -1,12 +1,8 @@
 package kr.co.eis.soccer.repositories;
 
-import kr.co.eis.soccer.domains.Soccer;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 /**
  * packageName: kr.co.eis.soccer.repositories
- * fileName   : SoccerRepository
+ * fileName   : TeamRepository
  * author     : MinHye_Sim
  * date       : 2022-05-09
  * desc       :
@@ -15,6 +11,5 @@ import org.springframework.stereotype.Repository;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-@Repository
-public interface SoccerRepository extends JpaRepository<Soccer, Long> {
+public interface TeamRepository {
 }
