@@ -1,12 +1,11 @@
-package kr.co.eis.services;
+package kr.co.eis.auth.services;
 
-import kr.co.eis.domains.User;
-import kr.co.eis.repositories.UserRepository;
+import kr.co.eis.auth.domains.User;
+import kr.co.eis.auth.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package kr.co.eis.controllers;
+package kr.co.eis.auth.controllers;
 
-import kr.co.eis.domains.User;
-import kr.co.eis.services.UserService;
+import kr.co.eis.auth.domains.User;
+import kr.co.eis.auth.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -67,10 +67,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestBody User user) {
-        return service.delete(user);
-
-    }
+    public String delete(@RequestBody User user) { return service.delete(user); }
 
     @PostMapping("/join")
     public String save(@RequestBody User user) {

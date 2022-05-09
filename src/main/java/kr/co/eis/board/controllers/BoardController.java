@@ -1,4 +1,4 @@
-package kr.co.eis.controllers;
+package kr.co.eis.board.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

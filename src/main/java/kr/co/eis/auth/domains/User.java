@@ -1,4 +1,4 @@
-package kr.co.eis.domains;
+package kr.co.eis.auth.domains;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
