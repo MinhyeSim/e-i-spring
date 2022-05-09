@@ -1,5 +1,6 @@
 package kr.co.eis.board.domains;
 
+import kr.co.eis.soccer.domains.Soccer;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ import javax.persistence.*;
 @Component
 @Entity
 @Table(name = "articles")
-public class Article {
+public class Article extends Soccer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false) private String projects;
