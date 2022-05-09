@@ -1,8 +1,8 @@
-package kr.co.eis.auth.common.algo01;
+package kr.co.eis.common.algo01;
 
 /**
  * packageName: kr.co.eis.auth.common.algo01
- * fileName   : Quiz20
+ * fileName   : Quiz10
  * author     : MinHye_Sim
  * date       : 2022-05-09
  * desc       :
@@ -11,5 +11,5 @@ package kr.co.eis.auth.common.algo01;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-public class Quiz20 {
+public class Quiz10 {
 }
