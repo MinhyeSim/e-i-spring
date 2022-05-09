@@ -1,4 +1,4 @@
-package kr.co.eis.auth.controllers;
+package kr.co.eis.auth;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

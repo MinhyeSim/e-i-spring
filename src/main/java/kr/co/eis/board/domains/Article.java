@@ -16,7 +16,7 @@ import javax.persistence.*;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-//아키텍쳐 패턴 코딩 
+//아키텍쳐 패턴 코딩
 @Data
 @Component
 @Entity
