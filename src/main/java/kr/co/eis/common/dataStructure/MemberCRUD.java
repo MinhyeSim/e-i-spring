@@ -29,7 +29,33 @@ public class MemberCRUD {
             System.out.println("0.exit 1.save 2.update 3.remove 4.findById 5.findByName 6.findAll 7.count 8.existsbyId ");
             switch (scanner.next()){
                 case "0":break;
-                case "1":break;
+                case "1":
+                    Member hong = new Member.Builder("hong")
+                            .email("hong@test.com")
+                            .password("1")
+                            .name("홍길동")
+                            .phone("010-0000-9999")
+                            .profileImg("hong.jpg")
+                            .build();
+                    service.save(hong);
+                    Member kim = new Member.Builder("kim")
+                            .email("kim@test.com")
+                            .password("1")
+                            .name("김유신")
+                            .phone("010-0044-9944")
+                            .profileImg("kim.jpg")
+                            .build();
+                    service.save(kim);
+                    Member you = new Member.Builder("you")
+                            .email("you@test.com")
+                            .password("1")
+                            .name("유관순")
+                            .phone("010-0880-9889")
+                            .profileImg("you.jpg")
+                            .build();
+                    service.save(you);
+                            
+                    break;
                 case "2":break;
                 case "3":break;
                 case "4":break;
@@ -52,7 +78,6 @@ public class MemberCRUD {
             this.phone = builder.phone;
             this.email = builder.email;
         }
-
         static class Builder{
             private String userid, name, password, profileImg, phone, email;
             public Builder (String userid){this.userid=userid;}
@@ -61,6 +86,9 @@ public class MemberCRUD {
             public Builder profileImg(String profileImg){this.profileImg=profileImg; return this;}
             public Builder phone(String phone){this.phone=phone; return this;}
             public Builder email(String email){this.email=email; return this;}
+            Member build(){return new Member(this); }
+
+
         }
         @Override public String toString(){
             return String.format("[사용자 스펙] userid : %s, name : %s, password : %s, profileImg : %s, phone : %s, email : %s",userid, name, password, profileImg, phone, email);
