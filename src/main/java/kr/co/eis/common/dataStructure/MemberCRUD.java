@@ -40,7 +40,8 @@ public class MemberCRUD {
             }
         }
     }
-    @Data @AllArgsConstructor class Member{
+    @Data @AllArgsConstructor
+    static class Member{
         protected String userid, name, password, profileImg, phone, email;
         @Override public String toString(){
             return String.format("[사용자 스펙] userid : %s, name : %s, password : %s, profileImg : %s, phone : %s, email : %s",userid, name, password, profileImg, phone, email);
