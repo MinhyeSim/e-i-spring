@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
  * 2022-05-09   MinHye_Sim   최초 생성
  */
 @Repository
+// 최상위 부모이기 때문에 아무것도 가지지 않은 무상태이다.
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
 

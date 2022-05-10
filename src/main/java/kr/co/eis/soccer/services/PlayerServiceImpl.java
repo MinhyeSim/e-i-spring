@@ -15,8 +15,9 @@ import org.springframework.stereotype.Service;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
+//구현 메소드
 @Service
 @RequiredArgsConstructor
-public class PlayerServiceImpl {
+public class PlayerServiceImpl implements PlayerService{
     private final PlayerRepository repository;
 }

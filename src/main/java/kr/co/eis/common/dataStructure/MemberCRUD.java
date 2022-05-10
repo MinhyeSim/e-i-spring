@@ -21,7 +21,7 @@ public class MemberCRUD {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         while(true){
-            System.out.println("0.exit 1.회원가입 2.findById 3.findByName 4.memberList 5.count 6. update 7.remove");
+            System.out.println("0.exit 1.save 2.update 3.remove 4.findById 5.findByName 6.findAll 7.count 8.existsbyId ");
             switch (scanner.next()){
                 case "0":break;
                 case "1":break;
@@ -41,9 +41,15 @@ public class MemberCRUD {
             return String.format("[사용자 스펙] userid : %s, name : %s, password : %s, profileImg : %s, phone : %s, email : %s",userid, name, password, profileImg, phone, email);
         }
     }
+    interface MemberService{
+        void save(Member member);
+    }
     @RequiredArgsConstructor
-    class MemberService{
+    class MemberServiceImpl implements MemberService{
         private final Map<String, Member> map;
-        void regiseter(Member member){map.put(member.getUserid(), member);}
+        @Override
+        public void save(Member member) {map.put(member.getUserid(), member);
+
+        }
     }
 }

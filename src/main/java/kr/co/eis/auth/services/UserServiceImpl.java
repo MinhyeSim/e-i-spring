@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
 
-    @Override
+    @Override //구현하는 메소드
     public String login(User user) {
         return null;
     }

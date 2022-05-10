@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-@Data
+@Data//getter&setter => 데이터를 조회하고 수정하는 역할
 @Entity
 @Component
 @Table(name = "players")

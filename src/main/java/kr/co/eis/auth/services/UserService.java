@@ -35,7 +35,6 @@ public interface UserService {
 
     String save(User user);
 
-
     boolean existsById(long l);
 
     Optional<User> findById(long l);
