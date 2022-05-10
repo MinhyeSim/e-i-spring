@@ -43,6 +43,25 @@ public class MemberCRUD {
     @Data @AllArgsConstructor
     static class Member{
         protected String userid, name, password, profileImg, phone, email;
+
+        public Member(Builder builder){
+            this.userid = builder.userid;
+            this.name = builder.name;
+            this.password = builder.password;
+            this.profileImg = builder.profileImg;
+            this.phone = builder.phone;
+            this.email = builder.email;
+        }
+
+        static class Builder{
+            private String userid, name, password, profileImg, phone, email;
+            public Builder (String userid){this.userid=userid;}
+            public Builder name(String name){this.name=name; return this;}
+            public Builder password(String password){this.password=password; return this;}
+            public Builder profileImg(String profileImg){this.profileImg=profileImg; return this;}
+            public Builder phone(String phone){this.phone=phone; return this;}
+            public Builder email(String email){this.email=email; return this;}
+        }
         @Override public String toString(){
             return String.format("[사용자 스펙] userid : %s, name : %s, password : %s, profileImg : %s, phone : %s, email : %s",userid, name, password, profileImg, phone, email);
         }
