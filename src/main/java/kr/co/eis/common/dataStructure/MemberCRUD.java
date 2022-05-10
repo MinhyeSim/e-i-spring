@@ -3,8 +3,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.BiFunction;
 
 /**
  * packageName: kr.co.eis.common.algorithm.dataStructure
@@ -20,6 +23,8 @@ import java.util.Scanner;
 public class MemberCRUD {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
+        MemberService service = new MemberServiceImpl();
+
         while(true){
             System.out.println("0.exit 1.save 2.update 3.remove 4.findById 5.findByName 6.findAll 7.count 8.existsbyId ");
             switch (scanner.next()){
@@ -43,13 +48,60 @@ public class MemberCRUD {
     }
     interface MemberService{
         void save(Member member);
+        void update(Member member);
+        void delete(Member member);
+        Member findById(String id);
+        List<Member> findByName(String name);
+        List<Member> findByAll();
+        int count();
+        boolean existsById(String id);
     }
-    @RequiredArgsConstructor
-    class MemberServiceImpl implements MemberService{
-        private final Map<String, Member> map;
+
+    static class MemberServiceImpl implements MemberService{
+        Map <String, Member> map;
+
+        MemberServiceImpl(){
+            this.map = new HashMap<>();
+        }
+
         @Override
         public void save(Member member) {map.put(member.getUserid(), member);
 
+        }
+
+        @Override
+        public void update(Member member) {map.replace(member.getUserid(), member);
+
+        }
+
+        @Override
+        public void delete(Member member) {map.remove(member.getUserid(), member);
+
+        }
+
+        @Override
+        public Member findById(String id) {
+            return map.get(id);
+        }
+
+        @Override
+        public List<Member> findByName(String name) {
+            return (List<Member>) map.get(name);
+        }
+
+        @Override
+        public List<Member> findByAll() {
+            return (List<Member>) map.values();
+        }
+
+        @Override
+        public int count() {
+            return map.size();
+        }
+
+        @Override
+        public boolean existsById(String id) {
+            return map.isEmpty();
         }
     }
 }
