@@ -1,13 +1,12 @@
 package kr.co.eis.common.dataStructure;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.BiFunction;
 
 /**
  * packageName: kr.co.eis.common.algorithm.dataStructure
@@ -57,16 +56,26 @@ public class MemberCRUD {
                             
                     break;
                 case "2":break;
-                case "3":break;
+                case "3":
+                    Member temp = new Member();
+                    temp.setUserid("kim");
+                    service.delete(temp);
+                    break;
                 case "4":break;
                 case "5":break;
                 case "6":break;
-                case "7":break;
+                case "7":
+                    System.out.println("총 회원수: "+service.count()+"명");
+                    break;
+                case "8":break;
+                case "9":
+                    service.clear();
+                    break;
                 default:break;
             }
         }
     }
-    @Data @AllArgsConstructor
+    @Data @NoArgsConstructor
     static class Member{
         protected String userid, name, password, profileImg, phone, email;
 
@@ -87,8 +96,6 @@ public class MemberCRUD {
             public Builder phone(String phone){this.phone=phone; return this;}
             public Builder email(String email){this.email=email; return this;}
             Member build(){return new Member(this); }
-
-
         }
         @Override public String toString(){
             return String.format("[사용자 스펙] userid : %s, name : %s, password : %s, profileImg : %s, phone : %s, email : %s",userid, name, password, profileImg, phone, email);
@@ -103,6 +110,7 @@ public class MemberCRUD {
         List<Member> findByAll();
         int count();
         boolean existsById(String id);
+        void clear();
     }
 
     static class MemberServiceImpl implements MemberService{
@@ -150,6 +158,11 @@ public class MemberCRUD {
         @Override
         public boolean existsById(String id) {
             return map.isEmpty();
+        }
+
+        @Override
+        public void clear() {
+            map.clear();
         }
     }
 }
