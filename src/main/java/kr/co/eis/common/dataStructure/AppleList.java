@@ -72,6 +72,10 @@ public class AppleList {
                 case "9":
                     service.clear();
                     break;
+                case "10":
+                    System.out.println("사과 가격은");
+                    break;
+
                 default:break;
             }
         }
