@@ -1,5 +1,6 @@
 package kr.co.eis.common.dataStructure;
 
+import static kr.co.eis.common.lambda.Lambda.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * packageName: kr.co.eis.common.dataStructure
@@ -25,6 +27,7 @@ public class AppleList {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         AppleService service = new AppleServiceImpl();
+
         while(true){
             System.out.println("0.exit 1.save 2.update 3.remove 4.findAll 5.findByOrigin 6.findByColor 7.count 8.existsById");
             switch (scanner.next()){
@@ -73,14 +76,15 @@ public class AppleList {
                     service.clear();
                     break;
                 case "10":
-                    System.out.println("사과 가격은");
+                    System.out.println("사과 가격은"+ integer("1000"));
+                    //System.out.println("내가 만든 배열의 사이즈는"+array(7));
                     break;
-
                 default:break;
             }
         }
     }
-    @Data static class Apple{
+    @Data
+    public static class Apple{
         private String color, origin;
         private int price;
 
@@ -88,15 +92,15 @@ public class AppleList {
             this.color = builder.color;
             this.origin = builder.origin;
             this.price = builder.price;
-
         }
-        @NoArgsConstructor static class Builder{
+        @NoArgsConstructor
+        static public class Builder{
             private String color, origin;
             private int price;
             public Builder color(String color){this.color=color; return this;}
             public Builder origin(String origin){this.origin=origin; return this;}
             public Builder price(int price){this.price=price; return this;}
-            Apple build(){return new Apple(this); }
+            public Apple build(){return new Apple(this); }
         }
         @Override public String toString(){
             return String.format("[사과 스펙] origin : %s, color : %s, price : %d",origin, color, price);

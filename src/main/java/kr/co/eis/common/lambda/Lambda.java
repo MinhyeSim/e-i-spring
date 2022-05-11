@@ -1,6 +1,11 @@
 package kr.co.eis.common.lambda;
 
+import java.util.Arrays;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.function.Predicate;
+
+import static kr.co.eis.common.dataStructure.AppleList.Apple;
 
 /**
  * packageName: kr.co.eis.common.lambda
@@ -15,17 +20,38 @@ import java.util.function.Function;
  */
 public class Lambda {
     public static void main(String[] args) {
-        //System.out.println(Lambda.integer("900"));
+        System.out.println(Lambda.integer("900"));
         System.out.println(Lambda.string(15));
+        System.out.println(string(new Apple.Builder().origin("영동").color("RED").price(3000).build()));
+        System.out.println(
+                string(
+                        Arrays.asList(
+                                new Apple.Builder().origin("영동").color("RED").price(3000).build(),
+                                new Apple.Builder().origin("영동").color("RED").price(3000).build(),
+                                new Apple.Builder().origin("영동").color("RED").price(3000).build()
+                        ))
+                 );
+        System.out.println(equals("a","a"));
+
     }
     public static int integer(String arg){
         //Inter = String.valueOf(Object);
         Function<String, Integer> f = Integer::parseInt;
         return f.apply(arg);
     }
-    public static String string(Object arg){
-        //String s = String.valueOf(Object);
+    public static String string(Object o){
+        //String s = String.valueOf(o);
         Function<Object, String> f = String::valueOf;
-        return f.apply(arg);
+        return f.apply(o);
     }
+    public static boolean equals(String s1, String s2){
+        BiPredicate<String, String> f = String::equals;
+        return f.test(s1, s2);
+    }
+    //int[] arr = new int[8];
+    // =int[]::new
+    // 1. 클래식 자바 2. 모던 자바 3. 람다(팩토리 패턴)
+
+
+
 }
