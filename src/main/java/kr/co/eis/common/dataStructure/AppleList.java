@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 /**
  * packageName: kr.co.eis.common.dataStructure
@@ -23,6 +24,49 @@ public class AppleList {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         AppleService service = new AppleServiceImpl();
+        while(true){
+            System.out.println("0.exit 1.save 2.update 3.remove 4.findById 5.findByName 6.findAll 7.count 8.existsbyId ");
+            switch (scanner.next()){
+                case "0":break;
+                case "1":
+                    Apple yd = new Apple.Builder()
+                            .origin("영동")
+                            .color("RED")
+                            .price(1000)
+                            .build();
+                    service.save(yd);
+                    Apple yd2 = new Apple.Builder()
+                            .origin("영동")
+                            .color("BLUE")
+                            .price(1500)
+                            .build();
+                    service.save(yd2);
+                    Apple pg = new Apple.Builder()
+                            .origin("풍기")
+                            .color("RED")
+                            .price(2000)
+                            .build();
+                    service.save(pg);
+                    break;
+                case "2":break;
+                case "3":
+                    //Apple temp = new AppleList.Apple();
+                    //temp.setOrigin("영동");
+                    //service.delete(temp);
+                    break;
+                case "4":break;
+                case "5":break;
+                case "6":break;
+                case "7":
+                    System.out.println("총 수량: "+service.count()+"개");
+                    break;
+                case "8":break;
+                case "9":
+                    service.clear();
+                    break;
+                default:break;
+            }
+        }
     }
     @Data static class Apple{
         private String color, origin;
@@ -42,6 +86,9 @@ public class AppleList {
             public Builder price(int price){this.price=price; return this;}
             Apple build(){return new Apple(this); }
         }
+        @Override public String toString(){
+            return String.format("[사과 스펙] origin : %s, color : %s, price : %d",origin, color, price);
+        }
     }
     interface AppleService{
         void save (Apple apple);
@@ -50,9 +97,10 @@ public class AppleList {
         List<Apple> findByAll (); //all
         List<Apple> findByOrigin (String origin);
         List<Apple> findByColor (String color);
-        Apple findById(int i); //unique
+        Apple findById(int id); //unique
         int count();
         boolean existsById(String id);
+        void clear();
     }
     //map은 key , id는 index
     static class AppleServiceImpl implements AppleService {
@@ -108,8 +156,26 @@ public class AppleList {
         public boolean existsById(String id) {
             return list.isEmpty();
         }
+
+        @Override
+        public void clear() {
+            list.clear();
+        }
     }
-
-
-
+    static List<Apple> filterApples(List<Apple> list, Predicate<Apple> p){
+        List<Apple> result = new ArrayList<>();
+        for(Apple apple: list){
+            if(p.test(apple)){
+                result.add(apple);
+            }
+        }return  result;
+    }
+    static List<Apple> filterApplesByOrigin(List<Apple> list, String origin){
+        List<Apple> result = new ArrayList<>();
+        for(Apple apple: list){
+            if(origin.equals(apple.getOrigin())){
+                result.add(apple);
+            }
+        }return  result;
+    }
 }
