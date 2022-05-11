@@ -1,9 +1,7 @@
 package kr.co.eis.common.dataStructure;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +45,12 @@ public class AppleList {
     }
     interface AppleService{
         void save (Apple apple);
-        void update (Apple apple);
+        void update(int i, Apple apple);
         void delete (Apple apple);
         List<Apple> findByAll (); //all
         List<Apple> findByOrigin (String origin);
         List<Apple> findByColor (String color);
-        Apple findById(int id); //unique
+        Apple findById(int i); //unique
         int count();
         boolean existsById(String id);
     }
@@ -67,17 +65,17 @@ public class AppleList {
 
         @Override
         public void save(Apple apple) {
-
+            list.add(apple);
         }
 
         @Override
-        public void update(Apple apple) {
-
+        public void update(int i,Apple apple) {
+            list.set(i, apple);
         }
 
         @Override
         public void delete(Apple apple) {
-
+            list.clear();
         }
 
         @Override
@@ -96,19 +94,19 @@ public class AppleList {
         }
 
         @Override
-        public Apple findById(int id) {
-            return null;
+        public Apple findById(int i) {
+            return list.get(i);
         }
 
 
         @Override
         public int count() {
-            return 0;
+            return list.size();
         }
 
         @Override
         public boolean existsById(String id) {
-            return false;
+            return list.isEmpty();
         }
     }
 

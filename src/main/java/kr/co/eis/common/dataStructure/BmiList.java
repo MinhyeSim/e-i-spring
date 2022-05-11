@@ -29,36 +29,39 @@ public class BmiList {
 
     interface BmiService{
         void save (Bmi bmi);
-        void update (Bmi bmi);
+        void update (int i, Bmi bmi);
         void delete (Bmi bmi);
         List<Bmi> findAll();
         List<Bmi> findBySsn(String ssn);
         List<Bmi> findByGender(String gender);
-        Bmi findById(int id);
+        List<Bmi> findByHeight(double height);
+        List<Bmi> findByWeight(double weight);
+        Bmi findById(int i);
         int count();
         boolean existById(String id);
 
     }
 
     static class BmiServiceImpl implements BmiService{
-        private final List<Bmi> bmi;
+        private final List<Bmi>list;
 
-        public BmiServiceImpl() {
-            this.bmi = new ArrayList<>();
+        public BmiServiceImpl(List<Bmi> list) {
+            this.list = list;
         }
 
         @Override
         public void save(Bmi bmi) {
-
+            list.add(bmi);
         }
 
         @Override
-        public void update(Bmi bmi) {
-
+        public void update(int i, Bmi bmi) {
+            list.set(i,bmi);
         }
 
         @Override
         public void delete(Bmi bmi) {
+            list.clear();
 
         }
 
@@ -78,18 +81,28 @@ public class BmiList {
         }
 
         @Override
-        public Bmi findById(int id) {
+        public List<Bmi> findByHeight(double height) {
             return null;
         }
 
         @Override
+        public List<Bmi> findByWeight(double weight) {
+            return null;
+        }
+
+        @Override
+        public Bmi findById(int id) {
+            return list.get(id);
+        }
+
+        @Override
         public int count() {
-            return 0;
+            return list.size();
         }
 
         @Override
         public boolean existById(String id) {
-            return false;
+            return list.isEmpty();
         }
     }
 
