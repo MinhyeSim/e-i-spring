@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * packageName: kr.co.eis.common.dataStructure
@@ -25,7 +26,7 @@ public class AppleList {
         Scanner scanner = new Scanner(System.in);
         AppleService service = new AppleServiceImpl();
         while(true){
-            System.out.println("0.exit 1.save 2.update 3.remove 4.findById 5.findByName 6.findAll 7.count 8.existsbyId ");
+            System.out.println("0.exit 1.save 2.update 3.remove 4.findAll 5.findByOrigin 6.findByColor 7.count 8.existsById");
             switch (scanner.next()){
                 case "0":break;
                 case "1":
@@ -54,9 +55,16 @@ public class AppleList {
                     //temp.setOrigin("영동");
                     //service.delete(temp);
                     break;
-                case "4":break;
-                case "5":break;
-                case "6":break;
+                case "4":
+                    System.out.println("4.findAll:\n"+service.findByAll());
+                    break;
+                case "5":
+                    System.out.println("5.findByOrigin");
+                    System.out.println(service.findByOrigin("영동"));
+                    break;
+                case "6":
+                    System.out.println("6.findByColor:\n"+service.findByColor("RED"));
+                    break;
                 case "7":
                     System.out.println("총 수량: "+service.count()+"개");
                     break;
@@ -133,12 +141,16 @@ public class AppleList {
 
         @Override
         public List<Apple> findByOrigin(String origin) {
-            return null;
+            return list.stream()
+                    .filter(apple -> apple.getOrigin().equals(origin))
+                    .collect(Collectors.toList());
         }
 
         @Override
         public List<Apple> findByColor(String color) {
-            return null;
+            return list.stream()
+                    .filter(apple -> apple.getColor().equals(color))
+                    .collect(Collectors.toList());
         }
 
         @Override
