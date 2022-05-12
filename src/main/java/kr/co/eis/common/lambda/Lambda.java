@@ -1,6 +1,7 @@
 package kr.co.eis.common.lambda;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.io.File;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.function.*;
@@ -33,6 +34,9 @@ public class Lambda {
                         ))
                  );
         System.out.println(equals("a","a"));
+        System.out.println(array(5).length);
+        System.out.println(random(1,6));
+
 
 
     }
@@ -59,7 +63,14 @@ public class Lambda {
         Function<Integer, int[]> f = int[]::new;
         return f.apply(a);
     }
-    
+
+    // 람다식
+    public static int random(int min, int max){
+        BiFunction<Integer, Integer, Integer> f = (min1, max1) -> (int)(Math.random()*max)+min;
+        return f.apply(min,max);
+    }
+
+
 
 
 
