@@ -25,8 +25,8 @@ public class Box<T>{
     public void add(T t){}
     public void set(T t){}
     public void remove(T t){}
-    public List<T> get(){};
-    public int size(){};
+    //public List<T> get(){};
+    //public int size(){};
     public void clear(){};
 
 
