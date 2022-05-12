@@ -69,7 +69,11 @@ public class Lambda {
         BiFunction<Integer, Integer, Integer> f = (min1, max1) -> (int)(Math.random()*max)+min;
         return f.apply(min,max);
     }
-
+    //File file = new File("d:\\example\\new_directory");
+    public static File makefile(String a){
+        Function<String, File> f = File::new;
+        return f.apply(a);
+    }
 
 
 
