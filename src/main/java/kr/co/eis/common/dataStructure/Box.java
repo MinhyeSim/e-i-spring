@@ -22,8 +22,14 @@ import java.util.List;
 public class Box<T>{
     private final ArrayList<T> list;
     public Box(){this.list = new ArrayList<>();}
+    public void add(T t){}
+    public void set(T t){}
+    public void remove(T t){}
+    public List<T> get(){};
+    public int size(){};
+    public void clear(){};
 
-    
+
 
 
 
