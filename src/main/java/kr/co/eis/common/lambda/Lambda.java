@@ -1,9 +1,8 @@
 package kr.co.eis.common.lambda;
 
 import java.util.Arrays;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Random;
+import java.util.function.*;
 
 import static kr.co.eis.common.dataStructure.AppleList.Apple;
 
@@ -26,6 +25,7 @@ public class Lambda {
         System.out.println(
                 string(
                         Arrays.asList(
+
                                 new Apple.Builder().origin("영동").color("RED").price(3000).build(),
                                 new Apple.Builder().origin("영동").color("RED").price(3000).build(),
                                 new Apple.Builder().origin("영동").color("RED").price(3000).build()
@@ -35,7 +35,7 @@ public class Lambda {
 
     }
     public static int integer(String arg){
-        //Inter = String.valueOf(Object);
+        //Integer i = String.valueOf(Object);
         Function<String, Integer> f = Integer::parseInt;
         return f.apply(arg);
     }
@@ -52,6 +52,10 @@ public class Lambda {
     // =int[]::new
     // 1. 클래식 자바 2. 모던 자바 3. 람다(팩토리 패턴)
 
+    public static int[] array(int a){
+        Function<Integer, int[]> f = int[]::new;
+        return f.apply(a);
+    }
 
-
+   
 }
