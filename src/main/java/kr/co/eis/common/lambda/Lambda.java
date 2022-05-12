@@ -1,5 +1,6 @@
 package kr.co.eis.common.lambda;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.function.*;
@@ -33,6 +34,7 @@ public class Lambda {
                  );
         System.out.println(equals("a","a"));
 
+
     }
     public static int integer(String arg){
         //Integer i = String.valueOf(Object);
@@ -52,10 +54,13 @@ public class Lambda {
     // =int[]::new
     // 1. 클래식 자바 2. 모던 자바 3. 람다(팩토리 패턴)
 
+    //메소드 참조 형식
     public static int[] array(int a){
         Function<Integer, int[]> f = int[]::new;
         return f.apply(a);
     }
+    
 
-   
+
+
 }
