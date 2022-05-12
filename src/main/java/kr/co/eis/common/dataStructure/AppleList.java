@@ -106,6 +106,7 @@ public class AppleList {
             return String.format("[사과 스펙] origin : %s, color : %s, price : %d",origin, color, price);
         }
     }
+    //interface = 기능 명세서
     interface AppleService{
         void save (Apple apple);
         void update(int i, Apple apple);
@@ -118,7 +119,7 @@ public class AppleList {
         boolean existsById(String id);
         void clear();
     }
-    //map은 key , id는 index
+    //implements는 구현
     static class AppleServiceImpl implements AppleService {
         private final List<Apple> list;
         //보안
@@ -144,7 +145,7 @@ public class AppleList {
 
         @Override
         public List<Apple> findByAll() {
-            return null;
+            return list;
         }
 
         @Override
@@ -165,7 +166,7 @@ public class AppleList {
         public Apple findById(int i) {
             return list.get(i);
         }
-
+        //Apple : 타입
 
         @Override
         public int count() {

@@ -20,14 +20,19 @@ import java.util.List;
  */
 @Component @Data @Lazy
 public class Box<T>{
+    // save update delete findAll findByName findById count existById clear
+    // add  set remove get X get(id) size X clear
+
     private final ArrayList<T> list;
     public Box(){this.list = new ArrayList<>();}
-    public void add(T t){}
-    public void set(T t){}
-    public void remove(T t){}
-    //public List<T> get(){};
-    //public int size(){};
-    public void clear(){};
+    public void save(T t){list.add(t);}
+    public void update(int i, T t){list.set(i,t);}
+    public void delete(int i){list.remove(i);}
+    //public void delete2(T t){list.remove(t);}
+    public List<T> findAll(){return list;}
+    public T findById(int i){return list.get(i);}
+    public int count(){return list.size();}
+    public void clear(){list.clear();}
 
 
 
