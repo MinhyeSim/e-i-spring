@@ -2,6 +2,7 @@ package kr.co.eis.auth.services;
 
 import kr.co.eis.auth.domains.User;
 import kr.co.eis.auth.repositories.UserRepository;
+import kr.co.eis.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -88,6 +89,16 @@ public class UserServiceImpl implements UserService {
     public boolean existsById(String userid) {
         return repository.existsById(0L);
     } //userid 타입이 다름
+
+    @Override
+    public List<User> findByUserName(String name) {
+        List<User> ls = repository.findAll();
+        Box<String, User> box = new Box<>();
+        // ls = box.findByUserName(ls, name);
+        // ls.stream().filter(...)
+        return null;
+    }
+
 
 
 

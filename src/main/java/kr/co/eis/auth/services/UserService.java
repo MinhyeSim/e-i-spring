@@ -47,6 +47,8 @@ public interface UserService {
 
     boolean existsById(String userid);
 
+    List<User> findByUserName(String name);
+
     //custom
 
 }
