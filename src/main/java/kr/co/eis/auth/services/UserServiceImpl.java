@@ -81,11 +81,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findById(String userid) {
-        return Optional.empty();
-    }
+        return repository.findById(0L);
+    } //userid 타입이 다름
 
     @Override
     public boolean existsById(String userid) {
-        return false;
-    }
+        return repository.existsById(0L);
+    } //userid 타입이 다름
+
+
+
 }

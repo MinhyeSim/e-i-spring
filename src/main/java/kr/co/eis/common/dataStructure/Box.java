@@ -1,12 +1,14 @@
 package kr.co.eis.common.dataStructure;
 
+import kr.co.eis.auth.domains.User;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -50,6 +52,39 @@ public class Box<K,V> {
      public V get(String id){return map.get(id);}
      public int size(){return map.size();}
      public void clear(){map.clear();}
+
+    //custom (기본적으로 주어진거 외에 추가 된 것)
+    public List<User> findByUserName(String name){
+         List<User> ls = new ArrayList<>();
+         for(User v :ls){ if(name.equals(v.getName())) ls.add(v);}
+         return ls;
+    }
+    public List<User>findAllUserList() {
+        // DB
+        List<User> ls = new ArrayList<>();
+        for (Map.Entry<K, V> e : map.entrySet()) {
+            ls.add((User) e.getValue());
+        }
+        return ls;
+    }
+
+    public List<User> finByUserName(String name){
+         List<User> ls = new ArrayList<>();
+         for (User v :ls) {if (name.equals(v.getName())) ls.add(v);}
+         return ls;
+    }
+    public Map<String, User> mapFindByUserName(String name) {
+        Map<String, User> map = new HashMap<>();
+        for (Map.Entry<String, User> e : map.entrySet()) {
+            if (name.equals((e.getValue().getName()))) map.put(e.getKey(),e.getValue());
+        }
+        return map;
+    }
+
+}
+
+
+
 
 
 
