@@ -59,20 +59,22 @@ public class Box<K,V> {
          for(User v :ls){ if(name.equals(v.getName())) ls.add(v);}
          return ls;
     }
+    //회원 아이디 목록 요청시
     public List<User>findAllUserList() {
-        // DB
         List<User> ls = new ArrayList<>();
         for (Map.Entry<K, V> e : map.entrySet()) {
             ls.add((User) e.getValue());
         }
         return ls;
     }
-
+    //이름으로 검색된 회원 목록 요청시(필터가 필요없이 리액트로 던지는 경우)
     public List<User> finByUserName(String name){
          List<User> ls = new ArrayList<>();
          for (User v :ls) {if (name.equals(v.getName())) ls.add(v);}
          return ls;
     }
+
+    //이름으로 검색된 회원 목로 요청시(추가 필터를 통해 더 줄어든 결과값이 필요한 경우)
     public Map<String, User> mapFindByUserName(String name) {
         Map<String, User> map = new HashMap<>();
         for (Map.Entry<String, User> e : map.entrySet()) {
@@ -80,16 +82,9 @@ public class Box<K,V> {
         }
         return map;
     }
+    //성능은
 
 }
 
 
 
-
-
-
-
-
-
-
-}
