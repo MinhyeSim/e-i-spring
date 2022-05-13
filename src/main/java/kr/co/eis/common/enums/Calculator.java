@@ -17,16 +17,24 @@ import java.util.function.BiFunction;
  */
 public class Calculator {
     public static void main(String[] args) {
-
+        System.out.println("+:" +Operation.PLUS.apply(7,5));
+        System.out.println("-:" +Operation.MINUS.apply(7,5));
+        System.out.println("*:" +Operation.MULTI.apply(7,5));
+        System.out.println("/:" +Operation.DIVIDE.apply(7,5));
     }
-    @RequiredArgsConstructor
-    enum Operation{
-    //enum자체가 static file(?)를 가지고 있기 때문에 별도의 static이 필요 없다
+    @RequiredArgsConstructor enum Operation{
+        PLUS("+", (x, y)->(x + y)),
+        MINUS("+", (x, y)->(x - y)),
+        MULTI("+", (x, y)->(x * y)),
+        DIVIDE("+", (x, y)->(x / y)),
+        ;
         private final String opcode;
-        //수 먼저 구성 (숫자 2개가 들어가고 1개가 리턴)
-        private final BiFunction<Integer, Integer, Integer> expression;
+        private final BiFunction<Integer, Integer, Integer> f;
 
+        @Override public String toString() {return opcode;}
+        public int apply(int a, int b){return f.apply(a,b);}
+        }
     }
 
 
-}
+
