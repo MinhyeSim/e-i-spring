@@ -36,56 +36,48 @@ public class PersonStream {
         @Override
         public String toString() {
             String gender = ssn;
-            String b = ssn.substring(0,2);
+            String b = ssn.substring(0, 2);
             int a = Integer.parseInt(b);
             int age = 123 - a;
-            if (ssn.substring(7).equals("1")||ssn.substring(7).equals("3")) {
+            if (ssn.substring(7).equals("1") || ssn.substring(7).equals("3")) {
                 gender = "남성";
-            } else if (ssn.substring(7).equals("2")||ssn.substring(7).equals("4")) {
+            } else if (ssn.substring(7).equals("2") || ssn.substring(7).equals("4")) {
                 gender = "여성";
             }
             return String.format("이름 : %s, 성별: %s, 나이: %d", name, gender, age);
         }
-        /*@Override
-        public String toString(){
-            String b = ssn.substring(0,2);
+
+        private String getYearAndAge(String p) {
+            String b = ssn.substring(0, 2);
             int a = Integer.parseInt(b);
             int age = 123 - a;
 
             return String.format("연도 : %s, 나이: %d", a, age);
-        }*/
+        }
 
     }
-        interface PersonService {
-            Person search(List<Person> arr);
 
-        }
+    @FunctionalInterface
+    interface PersonService {
+        Person search(List<Person> arr);
+    }
 
-        //Set<> : 중복제거, object로 출력해야하니까 List<Person>이 아닌 Person이다
-        static class PersonStreamServiceImpl implements PersonService {
-            @Override
-            public Person search (List<Person> arr) {
-                return arr
-                        .stream()
-                        .filter(e -> e.getName().equals("홍길동"))
-                        .collect(Collectors.toList()).get(0);
-            }
-        }
-
-        @Test
-        void personStreamTest() {
-            List<Person> p = Arrays.asList(
-                    Person.builder().name("홍길동").ssn("900120-1").build(),
-                    Person.builder().name("김유신").ssn("970620-1").build(),
-                    Person.builder().name("유관순").ssn("040920-4").build()
-            );
-            //"홍길동", "900120-1"
-            //"김유신", "970620-1"
-            //"유관순", "040920-4"
-            //남성, 여성 판단 로직
-            System.out.println(new PersonStreamServiceImpl().search(p));
-
-        }
-
+    //Test할 때만 실행 되고 사라지도록 만드는 구조
+    @Test
+    void personStreamTest() {
+        //DB
+        List<Person> l = Arrays.asList(
+                Person.builder().name("홍길동").ssn("900120-1").build(),
+                Person.builder().name("김유신").ssn("970620-1").build(),
+                Person.builder().name("유관순").ssn("040920-4").build()
+        );
+        //service
+        PersonService ps = person -> person
+                .stream()
+                .filter(e -> e.getName().equals("홍길동"))
+                .collect(Collectors.toList()).get(0);
+        System.out.println(ps.search(l));
+    }
 
 }
+
