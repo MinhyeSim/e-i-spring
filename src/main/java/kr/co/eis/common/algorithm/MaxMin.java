@@ -37,7 +37,7 @@ public class MaxMin{
         private int max, min;
         @Override
         public String toString(){
-            return String.format("최소값: %d", min);
+            return String.format("최소값: %d, 최대값: %d", min, max);
         }
 
     }
@@ -49,14 +49,14 @@ public class MaxMin{
         int[] arr = {3, 1, 9, 5, 10};
         SolutionService f = e -> {
             int max = 0;
-            int min = 10;
+            for (int i : e.getArr()){
+                if(i > max) max = i;
+            }
+            int min = max;
             for(int i : e.getArr()){
                 if(i < min) min = i;
-                if(i > max) max = i;
-
             }
-            return Solution.builder().min(min).build();
-                    ///Solution.builder().max(max).build();
+            return Solution.builder().min(min).max(max).build();
         };
        Solution s = Solution.builder().arr(arr).build();
        System.out.println(f.solution(s));
