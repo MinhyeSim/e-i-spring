@@ -39,9 +39,9 @@ public class Article {
     @Column @NotNull private String content;
     @Column(name = "written_date") @NotNull private String writtenDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    User u;
 
 
 }
