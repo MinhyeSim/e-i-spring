@@ -27,7 +27,6 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 @Entity
-@Eager
 @Table(name="users")
 public class User {
     @Id
@@ -39,7 +38,7 @@ public class User {
     @Column private @NotNull String email;
     @Column(name = "reg_date") @NotNull private String regDate;
 
-    @OneToMany(mappedBy = "u")
+    @OneToMany(mappedBy = "user")
     List<Article> articles = new ArrayList<>();
 
 
