@@ -29,7 +29,6 @@ public class MaxMin{
     @Getter // 은닉화
     @NoArgsConstructor
     @AllArgsConstructor
-
     private static class Solution {
         //모두 solution을 만들 것이라서 private(?)
         //elem : element 값 1개
@@ -48,11 +47,11 @@ public class MaxMin{
     void testSolution(){
         int[] arr = {3, 1, 9, 5, 10};
         SolutionService f = e -> {
-            int max = 0;
+            int max = 0; // 최대가최소값은 0이니까
             for (int i : e.getArr()){
                 if(i > max) max = i;
             }
-            int min = max;
+            int min = max; //
             for(int i : e.getArr()){
                 if(i < min) min = i;
             }

@@ -54,14 +54,11 @@ public class PersonStream {
 
             return String.format("연도 : %s, 나이: %d", a, age);
         }
-
     }
-
     @FunctionalInterface
     interface PersonService {
         Person search(List<Person> arr);
     }
-
     //Test할 때만 실행 되고 사라지도록 만드는 구조
     @Test
     void personStreamTest() {
@@ -72,7 +69,7 @@ public class PersonStream {
                 Person.builder().name("유관순").ssn("040920-4").build()
         );
         //service
-        PersonService ps = person -> person
+        PersonService ps = a -> a
                 .stream()
                 .filter(e -> e.getName().equals("홍길동"))
                 .collect(Collectors.toList()).get(0);
