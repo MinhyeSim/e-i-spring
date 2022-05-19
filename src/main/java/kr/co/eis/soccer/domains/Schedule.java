@@ -1,5 +1,5 @@
 package kr.co.eis.soccer.domains;
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -14,19 +14,28 @@ import javax.persistence.*;
  * DATE             AUTHOR              NOTE
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
+ * 2022-05-19      MinHye_Sim          수정
  */
-@Data
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Component
 @Entity
 @Table(name = "schedules")
 public class Schedule {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-    private String stadiumid;
-    private String scheDate;
+    @Column(name = "schedule_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumId;
+    private String stadiumId;
+    private String scheduleDate;
     private String gubun;
-    private String homeTeamid;
-    private String awayTeamid;
+    private String homeTeamId;
+    private String awayTeamId;
     private String homeScore;
     private String awayScore;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stadium_id")
+    Stadium stadium;
 }

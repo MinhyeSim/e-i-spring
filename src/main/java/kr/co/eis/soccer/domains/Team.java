@@ -1,8 +1,11 @@
 package kr.co.eis.soccer.domains;
-import lombok.Data;
+import lombok.*;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName   :   com.toomuchcoder.api.soccer.domains
@@ -14,21 +17,26 @@ import javax.persistence.*;
  * DATE             AUTHOR              NOTE
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
+ * 2022-05-19      MinHye_Sim          수정
  */
 
-@Data
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Component
 @Entity
+@Eager
 @Table(name = "teams")
 public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-    private String teamid;
+    @Id @Column(name = "team_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamId;
+    private String teamId;
     private String regionName;
     private String teamName;
     private String eTeamName;
     private String orig;
-    private String stadiumid;
+    private String stadiumId;
     private String zipCode1;
     private String zipCode2;
     private String address;
@@ -37,4 +45,10 @@ public class Team {
     private String fax;
     private String homepage;
     private String owner;
+
+    @OneToMany(mappedBy = "team")
+    List<Player> players = new ArrayList<>();
+
+
+
 }
