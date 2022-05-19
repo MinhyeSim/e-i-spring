@@ -1,8 +1,10 @@
 package kr.co.eis.auth.domains;
 
 import com.sun.istack.NotNull;
-import lombok.*;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,7 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 @Entity
+@Eager
 @Table(name="users")
 public class User {
     @Id

@@ -1,7 +1,6 @@
 package kr.co.eis.auth.domains;
 
 import lombok.*;
-import org.apache.catalina.LifecycleState;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +25,7 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 @Entity
+@Eager
 @Table(name="boards")
 public class Board {
     @Id

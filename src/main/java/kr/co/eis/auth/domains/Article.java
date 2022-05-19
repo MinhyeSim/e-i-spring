@@ -28,7 +28,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Component //컴포넌트는 프로퍼티와 메소드의 집합니다.
 @Entity
-
 @Table(name="articles")
 public class Article {
     @Id

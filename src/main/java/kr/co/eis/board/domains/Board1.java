@@ -11,5 +11,5 @@ package kr.co.eis.board.domains;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-public class Board {
+public class Board1 {
 }

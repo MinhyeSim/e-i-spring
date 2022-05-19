@@ -1,6 +1,6 @@
 package kr.co.eis.board.repositories;
 
-import kr.co.eis.board.domains.Article;
+import kr.co.eis.board.domains.Article1;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface ArticleRepository extends JpaRepository<Article, Long> {
+public interface ArticleRepository extends JpaRepository<Article1, Long> {
 
 }
