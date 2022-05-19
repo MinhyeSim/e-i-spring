@@ -1,7 +1,6 @@
 package kr.co.eis.soccer.domains;
 
 import lombok.*;
-import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -26,10 +25,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "players")
 public class Player {
-    @Id @Column(name = "player_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long playerId;
-    @Column(nullable = false) private String playerName;
-    private String teamId;
+    @Id @Column(name = "player_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long playerNo;
+    @Column(nullable = false) private String playerId;
+    @Column(nullable = false) private String PlayerName;
     private String ePlayerName;
     private String nickName;
     private String joinYyyy;
@@ -41,7 +40,7 @@ public class Player {
     private String height;
     private String weight;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 

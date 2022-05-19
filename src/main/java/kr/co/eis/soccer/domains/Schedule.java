@@ -25,10 +25,10 @@ import javax.persistence.*;
 @Table(name = "schedules")
 public class Schedule {
     @Id
-    @Column(name = "schedule_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumId;
-    private String stadiumId;
-    private String scheduleDate;
+    @Column(name = "schedule_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long scheduleNo;
+    @Column(nullable = false) private String scheduleId;
+    private String scheDate;
     private String gubun;
     private String homeTeamId;
     private String awayTeamId;

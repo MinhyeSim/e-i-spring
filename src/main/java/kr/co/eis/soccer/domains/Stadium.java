@@ -29,8 +29,9 @@ import java.util.List;
 @Table(name = "stadiums")
 public class Stadium {
     @Id
-    @Column(name = "stadium_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumid;
+    @Column(name = "stadium_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumNo;
+    @Column(nullable = false) private String stadiumId;
     private String stadiumName;
     private String homeTeamId;
     private String seatCount;

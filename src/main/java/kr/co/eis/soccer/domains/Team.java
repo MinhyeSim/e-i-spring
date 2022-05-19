@@ -1,5 +1,6 @@
 package kr.co.eis.soccer.domains;
 import lombok.*;
+import com.sun.istack.NotNull;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
@@ -29,14 +30,14 @@ import java.util.List;
 @Eager
 @Table(name = "teams")
 public class Team {
-    @Id @Column(name = "team_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamId;
-    private String teamId;
+    @Id @Column(name = "team_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
+    @Column(nullable = false) private String teamId;
+    @Column(nullable = false) private String stadiumId;
     private String regionName;
     private String teamName;
     private String eTeamName;
     private String orig;
-    private String stadiumId;
     private String zipCode1;
     private String zipCode2;
     private String address;
