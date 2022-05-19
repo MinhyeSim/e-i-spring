@@ -44,8 +44,4 @@ public class Player {
     @JoinColumn(name = "team_id")
     private Team team;
 
-
-
-
-
 }

@@ -49,7 +49,4 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     List<Player> players = new ArrayList<>();
-
-
-
 }
