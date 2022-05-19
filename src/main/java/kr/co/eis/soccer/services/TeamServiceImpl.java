@@ -1,5 +1,9 @@
 package kr.co.eis.soccer.services;
 
+import kr.co.eis.soccer.controllers.TeamRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 /**
  * packageName: kr.co.eis.soccer.services
  * fileName   : TeamServiceImpl
@@ -11,5 +15,8 @@ package kr.co.eis.soccer.services;
  * ================================
  * 2022-05-09   MinHye_Sim   최초 생성
  */
-public class TeamServiceImpl {
+@Service
+@RequiredArgsConstructor
+public class TeamServiceImpl implements TeamService{
+    private final TeamRepository repository;
 }
