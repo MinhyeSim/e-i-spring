@@ -1,6 +1,6 @@
 package kr.co.eis.soccer.services;
 
-import kr.co.eis.soccer.controllers.TeamRepository;
+import kr.co.eis.soccer.repositories.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
