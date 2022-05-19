@@ -33,7 +33,7 @@ public class Stadium {
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long stadiumNo;
     @Column(nullable = false) private String stadiumId;
     private String stadiumName;
-    private String homeTeamId;
+    private String hometeamId;
     private String seatCount;
     private String address;
     private String ddd;

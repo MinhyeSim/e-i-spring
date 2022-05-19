@@ -30,14 +30,15 @@ import java.util.List;
 @Eager
 @Table(name = "teams")
 public class Team {
-    @Id @Column(name = "team_no")
+    @Id
+    @Column(name = "team_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
     @Column(nullable = false) private String teamId;
     @Column(nullable = false) private String stadiumId;
     private String regionName;
     private String teamName;
     private String eTeamName;
-    private String orig;
+    private String origYyyy;
     private String zipCode1;
     private String zipCode2;
     private String address;

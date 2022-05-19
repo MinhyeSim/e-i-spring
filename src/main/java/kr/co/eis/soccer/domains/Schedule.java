@@ -27,15 +27,15 @@ public class Schedule {
     @Id
     @Column(name = "schedule_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long scheduleNo;
-    @Column(nullable = false) private String scheduleId;
     private String scheDate;
     private String gubun;
-    private String homeTeamId;
-    private String awayTeamId;
+    private String hometeamId;
+    private String awayteamId;
     private String homeScore;
     private String awayScore;
+    private String stadiumId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stadium_id")
-    Stadium stadium;
+    @JoinColumn(name = "stadium_no")
+    private Stadium stadium;
 }
