@@ -25,7 +25,7 @@ import java.util.Optional;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/teams")
+@RequestMapping("/team")
 public class TeamController {
     private final TeamService service;
 
@@ -33,6 +33,7 @@ public class TeamController {
     public List<Team> findAll() {
         return service.findAll();
     }
+
     @GetMapping("/findAll/sort")
     public List<Team> findAll(Sort sort) {
         return service.findAll(sort);
@@ -43,7 +44,7 @@ public class TeamController {
         return service.findAll(pageable);
     }
 
-    @PostMapping("/count")
+    @GetMapping ("/count")
     public long count() {
         return service.count();
     }
@@ -68,8 +69,5 @@ public class TeamController {
         return service.existsById(teamId);
     }
 
-    @PostMapping("/getOne/{id}")
-    public Team getOne(@PathVariable Long id) {
-        return service.getOne(id);
-    }
+
 }

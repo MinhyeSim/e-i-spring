@@ -29,46 +29,44 @@ public class TeamServiceImpl implements TeamService{
 
     @Override
     public List<Team> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public List<Team> findAll(Sort sort) {
-        return null;
+        return repository.findAll(sort);
     }
 
     @Override
     public Page<Team> findAll(Pageable pageable) {
-        return null;
+        return repository.findAll(pageable);
     }
 
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
     @Override
     public String delete(Team team) {
-        return null;
+        repository.delete(team);
+        return "";
     }
 
     @Override
     public String save(Team team) {
-        return null;
+        repository.save(team);
+        return "";
     }
 
     @Override
     public Optional<Team> findById(String teamId) {
-        return Optional.empty();
+        return repository.findById(0L);
     }
 
     @Override
     public boolean existsById(String teamId) {
-        return false;
+        return repository.existsById(0L);
     }
 
-    @Override
-    public Team getOne(Long id) {
-        return null;
-    }
 }

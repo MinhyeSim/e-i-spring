@@ -30,46 +30,45 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     public List<Player> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public List<Player> findAll(Sort sort) {
-        return null;
+        return repository.findAll(sort);
     }
 
     @Override
     public Page<Player> findAll(Pageable pageable) {
-        return null;
+        return repository.findAll(pageable);
     }
 
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
     @Override
     public String delete(Player player) {
+        repository.delete(player);
         return null;
     }
 
     @Override
     public String save(Player player) {
+        repository.save(player);
         return null;
     }
 
     @Override
     public Optional<Player> findById(String playerId) {
-        return Optional.empty();
+        return repository.findById(0L);
     }
 
     @Override
     public boolean existsById(String playerId) {
-        return false;
+        return repository.existsById(0L);
     }
 
-    @Override
-    public Player getOne(Long id) {
-        return null;
-    }
+
 }

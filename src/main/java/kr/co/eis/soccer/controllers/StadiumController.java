@@ -68,9 +68,5 @@ public class StadiumController {
         return service.existsById(stadiumId);
     }
 
-    @PostMapping("/getOne/{id}")
-    public Stadium getOne(@PathVariable Long id) {
-        return service.getOne(id);
-    }
 
 }

@@ -36,5 +36,4 @@ public interface ScheduleService {
 
     boolean existsById(String scheduleId);
 
-    Schedule getOne(Long id);
 }

@@ -36,5 +36,4 @@ public interface StadiumService {
 
     boolean existsById(String stadiumId);
 
-    Stadium getOne(Long id);
 }

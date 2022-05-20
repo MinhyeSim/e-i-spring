@@ -29,31 +29,33 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public List<Article> findAll(Sort sort) {
-        return null;
+        return repository.findAll(sort);
     }
 
     @Override
     public Page<Article> findAll(Pageable pageable) {
-        return null;
+        return repository.findAll(pageable);
     }
 
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
     @Override
     public String delete(Article article) {
-        return null;
+        repository.delete(article);
+        return "";
     }
 
     @Override
     public String save(Article article) {
-        return null;
+        repository.save(article);
+        return "";
     }
 }

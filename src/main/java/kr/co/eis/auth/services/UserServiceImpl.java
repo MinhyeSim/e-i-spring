@@ -30,55 +30,57 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
 
-    @Override //구현하는 메소드
+   /* @Override //구현하는 메소드
     public String login(User user) {
         return null;
-    }
+    }*/
 
     @Override
     public List<User> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public List<User> findAll(Sort sort) {
-        return null;
+        return repository.findAll(sort);
     }
 
     @Override
     public Page<User> findAll(Pageable pageable) {
-        return null;
+        return repository.findAll(pageable);
     }
 
     @Override
     public long count() {
-        return 0;
+        return repository.count();
     }
 
     @Override
     public String save(User user) {
+        repository.save(user);
         return null;
     }
 
     @Override
     public boolean existsById(long l) {
-        return false;
+        return repository.existsById(0L);
     }
 
     @Override
     public Optional<User> findById(long l) {
-        return Optional.empty();
+        return repository.findById(0L);
     }
 
     @Override
-    public String delete(User entity) {
+    public String delete(User user) {
+        repository.delete(user);
         return null;
     }
 
-    @Override
+    /*@Override
     public String put(User user) {
         return null;
-    }
+    }*/
 
     @Override
     public Optional<User> findById(String userid) {

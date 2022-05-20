@@ -67,13 +67,4 @@ public class PlayerController {
         return service.existsById(playerId);
     }
 
-    @PostMapping("/getOne/{id}")
-    public Player getOne(@PathVariable Long id) {
-        return service.getOne(id);
-    }
-
-
-
-
-
 }

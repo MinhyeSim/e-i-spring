@@ -23,7 +23,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    String login(User user);
+    //String login(User user);
 
     List<User> findAll();
 
@@ -39,9 +39,9 @@ public interface UserService {
 
     Optional<User> findById(long l);
 
-    String delete(User entity);
+    String delete(User user);
 
-    String put(User user);
+    //String put(User user);
 
     Optional<User> findById(String userid);
 

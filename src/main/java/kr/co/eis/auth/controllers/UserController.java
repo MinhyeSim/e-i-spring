@@ -31,10 +31,10 @@ public class UserController {
     private final UserService service;
 
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public String login(@RequestBody User user) {
         return service.login(user);
-    }
+    }*/
 
     @GetMapping("/logout")
     public String logout() {
@@ -61,10 +61,10 @@ public class UserController {
         return service.count();
     }
 
-    @PutMapping("/put")
+   /* @PutMapping("/put")
     public String put(@RequestBody User user) {
         return service.put(user);
-    }
+    }*/
 
     @DeleteMapping("/delete")
     public String delete(@RequestBody User user) { return service.delete(user); }

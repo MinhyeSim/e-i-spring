@@ -38,5 +38,4 @@ public interface PlayerService {
 
     boolean existsById(String playerId);
 
-    Player getOne(Long id);
 }

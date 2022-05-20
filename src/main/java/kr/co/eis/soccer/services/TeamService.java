@@ -36,5 +36,5 @@ public interface TeamService {
 
     boolean existsById(String teamId);
 
-    Team getOne(Long id);
+
 }

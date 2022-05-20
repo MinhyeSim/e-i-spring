@@ -68,8 +68,4 @@ public class ScheduleController {
         return service.existsById(scheduleId);
     }
 
-    @PostMapping("/getOne/{id}")
-    public Schedule getOne(@PathVariable Long id) {
-        return service.getOne(id);
-    }
 }
