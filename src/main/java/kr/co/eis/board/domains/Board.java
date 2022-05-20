@@ -1,4 +1,4 @@
-package kr.co.eis.auth.domains;
+package kr.co.eis.board.domains;
 
 import lombok.*;
 import org.springframework.data.repository.cdi.Eager;

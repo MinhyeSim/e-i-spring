@@ -1,12 +1,12 @@
-package kr.co.eis.auth.domains;
+package kr.co.eis.board.domains;
 
 import com.sun.istack.NotNull;
+import kr.co.eis.board.domains.Board;
+import kr.co.eis.board.domains.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;

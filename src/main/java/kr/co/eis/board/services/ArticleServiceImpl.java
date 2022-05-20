@@ -1,6 +1,6 @@
 package kr.co.eis.board.services;
 
-import kr.co.eis.board.domains.Article1;
+import kr.co.eis.board.domains.Article;
 import kr.co.eis.board.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,37 +26,34 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository repository;
 
+
     @Override
-    public List<Article1> findAll() {
-        return repository.findAll();
+    public List<Article> findAll() {
+        return null;
     }
 
     @Override
-    public List<Article1> findAll(Sort sort) {
-        return repository.findAll(sort);
+    public List<Article> findAll(Sort sort) {
+        return null;
     }
 
     @Override
-    public Page<Article1> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
+    public Page<Article> findAll(Pageable pageable) {
+        return null;
     }
 
     @Override
     public long count() {
-        return repository.count();
+        return 0;
     }
 
     @Override
-    public String delete(Article1 article) {
-        repository.delete(article);
-        return "";
+    public String delete(Article article) {
+        return null;
     }
 
     @Override
-    public String save(Article1 article) {
-        repository.save(article);
-        return "";
+    public String save(Article article) {
+        return null;
     }
-
-
 }
