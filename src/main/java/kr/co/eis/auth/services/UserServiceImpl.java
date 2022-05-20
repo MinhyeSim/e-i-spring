@@ -1,6 +1,6 @@
 package kr.co.eis.auth.services;
 
-import kr.co.eis.board.domains.User;
+import kr.co.eis.auth.domains.User;
 import kr.co.eis.auth.repositories.UserRepository;
 import kr.co.eis.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;

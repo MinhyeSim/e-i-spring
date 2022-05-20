@@ -1,6 +1,7 @@
-package kr.co.eis.board.domains;
+package kr.co.eis.auth.domains;
 
 import com.sun.istack.NotNull;
+import kr.co.eis.board.domains.Article;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

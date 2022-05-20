@@ -25,7 +25,7 @@ import java.util.Optional;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/team")
+@RequestMapping("/teams")
 public class TeamController {
     private final TeamService service;
 

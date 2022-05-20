@@ -1,6 +1,6 @@
 package kr.co.eis.common.dataStructure;
 
-import kr.co.eis.board.domains.User;
+import kr.co.eis.auth.domains.User;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

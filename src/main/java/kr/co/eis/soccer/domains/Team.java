@@ -28,7 +28,7 @@ import java.util.List;
 @Component
 @Entity
 @Eager
-@Table(name = "teams")
+@Table(name = "team")
 public class Team {
     @Id
     @Column(name = "team_no")
