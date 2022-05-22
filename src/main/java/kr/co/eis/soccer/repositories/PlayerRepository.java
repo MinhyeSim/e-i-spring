@@ -27,7 +27,7 @@ interface PlayerCustomRepository{
     @Query(value="")
     int update();
 
-    // 002. 플레이어의 포지션 종류를 나열하시오.단 중복은 제거하시오
+    // 002. 플레이어의 포지션 종류를 나열하시오.단 중복은 제거하시오.
     @Query(value = "select distinct p.position from Player p")
     List<String> findPositions();
 
