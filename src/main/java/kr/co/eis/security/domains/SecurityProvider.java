@@ -8,11 +8,14 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.annotation.PostConstruct;
 import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.message.AuthException;
 import javax.security.auth.message.config.AuthConfigProvider;
 import javax.security.auth.message.config.ClientAuthConfig;
 import javax.security.auth.message.config.ServerAuthConfig;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  * packageName: kr.co.eis.security.domains
@@ -38,6 +41,10 @@ public class SecurityProvider implements AuthenticationProvider {
     @Value("${security.jwt.token.expiration-length:3600000}")
     private long validityInMs = 3600000; //1h
 
+    @PostConstruct
+    protected void init(){
+        securitykey = Base64.getEncoder().encodeToString(securitykey.getBytes());
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
