@@ -1,5 +1,6 @@
 package kr.co.eis.security.domains;
 
+import kr.co.eis.auth.domains.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -16,6 +17,7 @@ import javax.security.auth.message.config.ClientAuthConfig;
 import javax.security.auth.message.config.ServerAuthConfig;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.List;
 
 /**
  * packageName: kr.co.eis.security.domains
@@ -44,6 +46,11 @@ public class SecurityProvider implements AuthenticationProvider {
     @PostConstruct
     protected void init(){
         securitykey = Base64.getEncoder().encodeToString(securitykey.getBytes());
+        log.info("securitykey: "+securitykey);
+    }
+
+    public String createToken(String username, List<Role> roles){
+        return "";
     }
 
     @Override
