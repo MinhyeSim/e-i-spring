@@ -36,12 +36,14 @@ public class AuthToken {
             headers.put("alg","HS256");
             Map<String, Object> payload = new HashMap<>();
             headers.put("data","blahblah");
-            Date ext = new Date();
+            Date exp = new Date();
+            exp.setTime(exp.getTime()+1000*60L*10L);//10분
             return Jwts.builder()
                     .setHeader(headers)
-                    .setPayload("user")
-                    .setSubject(ext)
-                    .sigWith(SignatureAlgorithm.HS256, key.getBytes())
+                    .setClaims(payload)
+                    .setSubject("user")
+                    .setExpiration(exp)
+                    .signWith(SignatureAlgorithm.HS256, key.getBytes())
                     .compact();
         }
         catch (SecurityException e){log.info("SecurityException JWT");}
