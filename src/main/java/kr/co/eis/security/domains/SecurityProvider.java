@@ -38,15 +38,15 @@ public class SecurityProvider implements AuthenticationProvider {
     private final UserDetailsServiceImpl service;
 
     @Value("${security.jwt.token.security-key:secret-key}")
-    private String securitykey;
+    private String securityKey;
 
     @Value("${security.jwt.token.expiration-length:3600000}")
     private long validityInMs = 3600000; //1h
 
     @PostConstruct
     protected void init(){
-        securitykey = Base64.getEncoder().encodeToString(securitykey.getBytes());
-        log.info("securitykey: "+securitykey);
+        securityKey = Base64.getEncoder().encodeToString(securityKey.getBytes());
+        log.info("securitykey: "+securityKey);
     }
 
     public String createToken(String username, List<Role> roles){
