@@ -1,4 +1,4 @@
-package kr.co.eis.auth.domains;
+package kr.co.eis.user.domains;
 
 import com.sun.istack.NotNull;
 import kr.co.eis.board.domains.Article;

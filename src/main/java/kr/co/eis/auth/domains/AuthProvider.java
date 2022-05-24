@@ -1,7 +1,7 @@
-package kr.co.eis.security.domains;
+package kr.co.eis.auth.domains;
 
-import kr.co.eis.auth.domains.Role;
-import kr.co.eis.security.services.UserDetailsServiceImpl;
+import kr.co.eis.user.domains.Role;
+import kr.co.eis.auth.services.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -28,9 +28,9 @@ import java.util.List;
 @Log
 @Component
 @RequiredArgsConstructor
-public class SecurityProvider implements AuthenticationProvider {
+public class AuthProvider implements AuthenticationProvider {
 
-    private final UserDetailsServiceImpl service;
+    private final AuthServiceImpl service;
 
     @Value("${security.jwt.token.security-key:secret-key}")
     private String securityKey;

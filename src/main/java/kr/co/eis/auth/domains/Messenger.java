@@ -1,4 +1,4 @@
-package kr.co.eis.security.domains;
+package kr.co.eis.auth.domains;
 
 import lombok.Builder;
 import lombok.Getter;

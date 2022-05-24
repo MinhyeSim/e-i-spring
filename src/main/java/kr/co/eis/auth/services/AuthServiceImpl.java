@@ -1,7 +1,8 @@
-package kr.co.eis.security.services;
+package kr.co.eis.auth.services;
 
-import kr.co.eis.auth.domains.User;
-import kr.co.eis.auth.repositories.UserRepository;
+import kr.co.eis.user.domains.User;
+import kr.co.eis.user.repositories.UserRepository;
+import kr.co.eis.auth.domains.Auth;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,12 +25,12 @@ import java.util.Optional;
  */
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class AuthServiceImpl implements UserDetailsService {
     private final UserRepository repository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = Optional.ofNullable(repository.findByUsername(username))
                 .orElseThrow(() -> new UsernameNotFoundException(username+""));
-        return null;
+        return Auth.build(user.get());
     }
 }

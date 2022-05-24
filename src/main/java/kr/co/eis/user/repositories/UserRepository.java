@@ -1,6 +1,6 @@
-package kr.co.eis.auth.repositories;
+package kr.co.eis.user.repositories;
 
-import kr.co.eis.auth.domains.User;
+import kr.co.eis.user.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

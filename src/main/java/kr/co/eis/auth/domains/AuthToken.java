@@ -1,4 +1,4 @@
-package kr.co.eis.security.domains;
+package kr.co.eis.auth.domains;
 
 import io.jsonwebtoken.*;
 import lombok.extern.java.Log;
@@ -19,11 +19,11 @@ import java.util.Map;
  * 2022-05-23   MinHye_Sim   최초 생성
  */
 @Log
-public class SecurityToken {
+public class AuthToken {
     private String token;
     private String key;
 
-    public SecurityToken(String key){
+    public AuthToken(String key){
         this.key = key;
         this.token = createToken();
     }
