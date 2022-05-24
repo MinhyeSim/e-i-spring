@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AuthProvider implements AuthenticationProvider {
 
-    private final AuthServiceImpl service;
+    private final AuthServiceImpl userDetailsService;
 
     @Value("${security.jwt.token.security-key:secret-key}")
     private String securityKey;
@@ -70,7 +70,7 @@ public class AuthProvider implements AuthenticationProvider {
                 .compact();
     }
     public Authentication getAuthentication(String token){
-        UserDetails auth = service.loadUserByUsername(getUsername(token));
+        UserDetails auth = userDetailsService.loadUserByUsername(getUsername(token));
         return new UsernamePasswordAuthenticationToken(auth.getAuthorities(),"",auth.getAuthorities());
     }
 
