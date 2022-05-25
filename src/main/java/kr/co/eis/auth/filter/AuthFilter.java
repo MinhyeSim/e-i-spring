@@ -49,7 +49,7 @@ public class AuthFilter extends OncePerRequestFilter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        filterChain.doFilter(request, response); 
+        filterChain.doFilter(request, response);
 
     }
 }

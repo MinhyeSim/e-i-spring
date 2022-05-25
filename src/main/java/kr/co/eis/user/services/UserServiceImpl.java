@@ -1,12 +1,17 @@
 package kr.co.eis.user.services;
 
+import kr.co.eis.auth.configs.AuthProvider;
+import kr.co.eis.user.domains.Role;
 import kr.co.eis.user.domains.User;
+import kr.co.eis.user.domains.UserDTO;
 import kr.co.eis.user.repositories.UserRepository;
 import kr.co.eis.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,12 +33,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository repository;
+    private final PasswordEncoder encoder; //패스워드를 보지 못하게
+    private final AuthProvider provider;
+    private final ModelMapper modelMapper;//엔티티와 디티오를 변경
 
 
-   /* @Override //구현하는 메소드
-    public String login(User user) {
+    @Override //구현하는 메소드
+    public UserDTO login(User user) {
         return null;
-    }*/
+    }
 
     @Override
     public List<User> findAll() {
@@ -57,6 +65,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String save(User user) {
+    
         repository.save(user);
         return null;
     }
