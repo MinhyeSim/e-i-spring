@@ -40,6 +40,14 @@ public class Lambda {
 
 
     }
+    public static long longParse(String s){
+        Function<String, Long> f = Long::parseLong;
+        return f.apply(s);
+    }
+    public static float floatParse(String s){
+        Function<String, Float> f = Float::parseFloat;
+        return f.apply(s);
+    }
     public static int integer(String arg){
         //Integer i = String.valueOf(Object);
         Function<String, Integer> f = Integer::parseInt;

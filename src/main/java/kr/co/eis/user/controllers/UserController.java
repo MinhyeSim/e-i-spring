@@ -1,11 +1,14 @@
 package kr.co.eis.user.controllers;
 
+import kr.co.eis.auth.domains.Messenger;
 import kr.co.eis.user.domains.User;
+import kr.co.eis.user.domains.UserDTO;
 import kr.co.eis.user.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,10 +34,11 @@ public class UserController {
     private final UserService service;
 
 
-    /*@PostMapping("/login")
-    public String login(@RequestBody User user) {
-        return service.login(user);
-    }*/
+    @PostMapping("/login")
+    public ResponseEntity<UserDTO> login(@RequestBody User user) {
+        return ResponseEntity.ok(service.login(user));
+        //엔티티니까 실제 값을 보낸다
+    }
 
     @GetMapping("/logout")
     public String logout() {
@@ -57,8 +61,13 @@ public class UserController {
     }
 
     @GetMapping("/count")
-    public long count() {
+    public Messenger count() {
         return service.count();
+    }
+
+    @PutMapping("/update")
+    public Messenger update(){
+        return service.update();
     }
 
    /* @PutMapping("/put")
@@ -70,7 +79,7 @@ public class UserController {
     public String delete(@RequestBody User user) { return service.delete(user); }
 
     @PostMapping("/join")
-    public String save(@RequestBody User user) {
+    public Messenger save(@RequestBody User user) {
         return service.save(user);
     }
 
@@ -80,7 +89,7 @@ public class UserController {
     }
 
     @GetMapping("/existById/{userid}")
-    public boolean existsById(@PathVariable String userid) {
+    public Messenger existsById(@PathVariable String userid) {
         return service.existsById(userid);//userid 타입이 다름
     }
 

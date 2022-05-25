@@ -1,6 +1,7 @@
 package kr.co.eis.user.services;
 
 import kr.co.eis.auth.configs.AuthProvider;
+import kr.co.eis.auth.domains.Messenger;
 import kr.co.eis.auth.exception.SecurityRuntimeException;
 import kr.co.eis.user.domains.Role;
 import kr.co.eis.user.domains.User;
@@ -19,6 +20,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static kr.co.eis.common.lambda.Lambda.longParse;
+import static kr.co.eis.common.lambda.Lambda.string;
 
 /**
  * packageName: kr.co.eis.services
@@ -75,26 +79,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long count() {
-        return repository.count();
+    public Messenger count() {
+        return Messenger.builder()
+                .message(string(repository.count())).build();
     }
 
     @Override
-    public String save(User user) {
-        String tempId = user.getUsername();
-        User u = repository.findByUsername(user.getUsername()).orElse(null);
-        if(u == null){
+    public Messenger save(User user) {
+        String result = "";
+        if(repository.findByUsername(user.getUsername()).isEmpty()){
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
-            repository.save(user);
+            repository.save(User.builder().password(encoder.encode(user.getPassword()))
+                    .roles(list).build());
+            result = "SUCCESS";
+        }else{
+            result = "FAIL";
         }
-
-        return null;
+        return Messenger.builder().message(result).build();
     }
 
     @Override
-    public boolean existsById(long l) {
-        return repository.existsById(0L);
+    public Messenger existsById(String userid) {
+        return repository.existsById(longParse(userid))
+                ? Messenger.builder().message("EXIST").build()
+                : Messenger.builder().message("NOT_EXIST").build();
+
     }
 
     @Override
@@ -119,11 +129,6 @@ public class UserServiceImpl implements UserService {
     } //userid 타입이 다름
 
     @Override
-    public boolean existsById(String userid) {
-        return repository.existsById(0L);
-    } //userid 타입이 다름
-
-    @Override
     public List<User> findByUserName(String name) {
         List<User> ls = repository.findAll();
         Box<String, User> box = new Box<>();
@@ -132,7 +137,10 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-
+    @Override
+    public Messenger update() {
+        return null;
+    }
 
 
 }
