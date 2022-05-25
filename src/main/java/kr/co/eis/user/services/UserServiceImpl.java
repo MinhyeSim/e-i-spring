@@ -80,6 +80,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String save(User user) {
+        String tempId = user.getUsername();
+        User u = repository.findByUsername(user.getUsername()).orElse(null);
         boolean existUsernameCheck = false;
         repository.save(user);
         return null;
