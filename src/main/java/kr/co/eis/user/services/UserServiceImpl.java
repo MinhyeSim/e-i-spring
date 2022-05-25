@@ -1,6 +1,7 @@
 package kr.co.eis.user.services;
 
 import kr.co.eis.auth.configs.AuthProvider;
+import kr.co.eis.auth.exception.SecurityRuntimeException;
 import kr.co.eis.user.domains.Role;
 import kr.co.eis.user.domains.User;
 import kr.co.eis.user.domains.UserDTO;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +37,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
     private final PasswordEncoder encoder; //패스워드를 보지 못하게
     private final AuthProvider provider;
-    private final ModelMapper modelMapper;//엔티티와 디티오를 변경
+    private final ModelMapper modelMapper;//엔티티와 디티오를 맵핑
 
 
     @Override //구현하는 메소드
@@ -49,8 +51,8 @@ public class UserServiceImpl implements UserService {
             List<Role> roles = findUser.getRoles();
             String token = checkPassword ? provider.createToken(username,roles) : "Wrong Password";
 
-
         }catch (Exception e){
+            throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
 
         }
         return null;
@@ -78,7 +80,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String save(User user) {
-
+        boolean existUsernameCheck = false;
         repository.save(user);
         return null;
     }
