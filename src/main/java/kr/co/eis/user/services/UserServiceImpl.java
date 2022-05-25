@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,8 +83,12 @@ public class UserServiceImpl implements UserService {
     public String save(User user) {
         String tempId = user.getUsername();
         User u = repository.findByUsername(user.getUsername()).orElse(null);
-        boolean existUsernameCheck = false;
-        repository.save(user);
+        if(u == null){
+            List<Role> list = new ArrayList<>();
+            list.add(Role.USER);
+            repository.save(user);
+        }
+
         return null;
     }
 
