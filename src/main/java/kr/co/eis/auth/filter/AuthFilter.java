@@ -31,12 +31,9 @@ public class AuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String token = provider.resolveToken(request); // 1. provider가 토큰을 판단 2.resolveTonken()이 처리
-        try{ //토큰에 대한 유효성을 판단
+        String token = provider.resolveToken(request);
+        try{
             if(token != null && provider.validateToken(token)) {
-                //1.없으면 1차적으로 제거
-                //2.프로바이더가 판단
-                //3.validateToken()이 해당 토큰이 유효한지 확인(?)
                 Authentication auth = provider.getAuthentication(token);
                 SecurityContextHolder.clearContext();
                 SecurityContextHolder.getContext().setAuthentication(auth);
@@ -52,7 +49,7 @@ public class AuthFilter extends OncePerRequestFilter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        filterChain.doFilter(request, response); //입장하는 것도 나가는 것도
+        filterChain.doFilter(request, response); 
 
     }
 }
