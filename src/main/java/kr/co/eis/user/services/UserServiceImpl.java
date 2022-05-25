@@ -40,6 +40,19 @@ public class UserServiceImpl implements UserService {
 
     @Override //구현하는 메소드
     public UserDTO login(User user) {
+        try {
+            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+            User findUser = repository.findByUsername(user.getUsername()).orElse(null);
+            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
+            boolean checkPassword = encoder.matches(user.getPassword(),pw);
+            String username = user.getUsername();
+            List<Role> roles = findUser.getRoles();
+            String token = checkPassword ? provider.createToken(username,roles) : "Wrong Password";
+
+
+        }catch (Exception e){
+
+        }
         return null;
     }
 
@@ -65,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String save(User user) {
-    
+
         repository.save(user);
         return null;
     }
