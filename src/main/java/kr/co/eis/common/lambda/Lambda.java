@@ -2,6 +2,7 @@ package kr.co.eis.common.lambda;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.function.*;
@@ -82,6 +83,11 @@ public class Lambda {
         Function<String, File> f = File::new;
         return f.apply(a);
     }
+    public static String date() {
+        Supplier<String> f = () -> string(LocalDate.now());
+        return f.get();
+    }
+
 
 
 

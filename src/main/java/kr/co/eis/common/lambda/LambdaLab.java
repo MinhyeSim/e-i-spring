@@ -20,8 +20,7 @@ import static kr.co.eis.common.lambda.Lambda.string;
  */
 public class LambdaLab {
     public static String solution(){
-        Supplier<String> f = () -> string(LocalDate.now());
-        return f.get();
+        return "";
     }
 
     @Test
