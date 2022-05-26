@@ -35,22 +35,21 @@ public interface UserService {
 
     Messenger count();
 
-    Messenger save(User user);
+    Messenger update(User user);
 
+    Messenger delete(User user);
 
-    Optional<User> findById(long l);
-
-    String delete(User user);
-
-    //String put(User user);
+    Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
 
     Messenger existsById(String userid);
 
+    //custom
+
     List<User> findByUserName(String name);
 
-    Messenger update();
+    Messenger logout();
 
     //custom
 

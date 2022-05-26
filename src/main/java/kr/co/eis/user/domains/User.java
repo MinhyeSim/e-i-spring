@@ -27,7 +27,6 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Setter
-@Component
 @Entity
 @Eager
 @Table(name="users")

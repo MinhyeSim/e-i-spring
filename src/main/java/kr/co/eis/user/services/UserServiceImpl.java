@@ -86,13 +86,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Messenger save(User user) {
+    public Messenger save(UserDTO user) {
+        System.out.println("서비스로 전달된 회원가입 정보: "+user.toString());
         String result = "";
         if(repository.findByUsername(user.getUsername()).isEmpty()){
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
-            repository.save(User.builder().password(encoder.encode(user.getPassword()))
-                    .roles(list).build());
+            repository.save(User.builder()
+                            .username(user.getUsername())
+                            .name(user.getName())
+                            .regDate(user.getRegDate())
+                            .email(user.getEmail())
+                            .password(encoder.encode(user.getPassword()))
+                            .roles(list).build());
             result = "SUCCESS";
         }else{
             result = "FAIL";
@@ -109,20 +115,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(long l) {
-        return repository.findById(0L);
-    }
-
-    @Override
-    public String delete(User user) {
+    public Messenger delete(User user) {
         repository.delete(user);
-        return null;
+        return Messenger.builder().message("").build();
     }
 
-    /*@Override
-    public String put(User user) {
-        return null;
-    }*/
 
     @Override
     public Optional<User> findById(String userid) {
@@ -139,9 +136,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Messenger update() {
-        return null;
+    public Messenger update(User user) {
+        return Messenger.builder().build();
     }
+
+    @Override
+    public Messenger logout() {
+        return Messenger.builder().build();
+    }
+
+
 
 
 }
