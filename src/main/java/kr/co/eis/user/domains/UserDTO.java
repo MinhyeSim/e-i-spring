@@ -25,7 +25,7 @@ public class UserDTO {
     @ApiModelProperty(position = 3) String name;
     @ApiModelProperty(position = 4) String email;
     @ApiModelProperty(position = 5) private String regDate;
-    @ApiModelProperty(position = 6) private String token;
-    @ApiModelProperty(position = 7) private List<Role> roles;
+    @ApiModelProperty(position = 6) private String token; //자바에서 생성
+    @ApiModelProperty(position = 7) private List<Role> roles; //자바에서 생성
 
 }

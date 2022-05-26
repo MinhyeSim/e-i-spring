@@ -34,5 +34,7 @@ interface TeamCustomRepository{
     // 005-2. 수원팀의 ID는 ?
 
 }
+
+@Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
 }
