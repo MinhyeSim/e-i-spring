@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    UserDTO login(User user);
+    UserDTO login(UserDTO user);
 
     List<User> findAll();
 

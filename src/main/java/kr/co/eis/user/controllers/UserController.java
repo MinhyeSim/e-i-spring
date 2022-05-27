@@ -44,7 +44,7 @@ public class UserController {
             @ApiResponse(code = 422, message = "유효하지 않은 아이디/ 비밀번호")
     })
     public ResponseEntity<UserDTO> login(@RequestBody UserDTO user) {
-        return ResponseEntity.ok(service.login(modelMapper.map(user,User.class)));
+        return ResponseEntity.ok(service.login(user));
     }
 
     @GetMapping("/logout")

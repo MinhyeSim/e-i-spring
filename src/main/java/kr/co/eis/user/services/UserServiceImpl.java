@@ -47,21 +47,27 @@ public class UserServiceImpl implements UserService {
 
 
     @Override //구현하는 메소드
-    public UserDTO login(User user) {
+    public UserDTO login(UserDTO paramUser) {
         try {
-            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-            User findUser = repository.findByUsername(user.getUsername()).orElse(null);
-            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
-            boolean checkPassword = encoder.matches(user.getPassword(),pw);
-            String username = user.getUsername();
-            List<Role> roles = findUser.getRoles();
-            String token = checkPassword ? provider.createToken(username,roles) : "Wrong Password";
-
+            UserDTO returnUser = new UserDTO();
+            String username = paramUser.getUsername();
+            User findUser = repository.findByUsername(paramUser.getUsername()).orElse(null);
+            if(findUser != null){
+                boolean checkPassword = encoder.matches(paramUser.getPassword(), findUser.getPassword());
+                if(checkPassword){
+                    returnUser = modelMapper.map(findUser, UserDTO.class);
+                    String token = provider.createToken(username,returnUser.getRoles()) ;
+                    returnUser.setToken(token);
+                }else{
+                    String token = "FAILURE";
+                    returnUser.setToken(token);
+                }
+            }
+            return returnUser;
         }catch (Exception e){
             throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
 
         }
-        return null;
     }
 
     @Override
